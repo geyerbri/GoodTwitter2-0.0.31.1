@@ -18,16 +18,16 @@
 // @grant         GM_info
 // @grant         GM_xmlhttpRequest
 // @connect       api.twitter.com
-// @resource      css https://github.com/Bl4Cc4t/GoodTwitter2/raw/master/twitter.gt2eb.style.css
+// @resource      css https://github.com/geyerbri/GoodTwitter2-0.0.31.1/raw/master/twitter.gt2eb.style.css
 // @resource      emojiRegex https://github.com/mathiasbynens/emoji-regex/raw/main/es2015/index.js
 // @resource      pickrCss https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css
-// @require       https://github.com/Bl4Cc4t/GoodTwitter2/raw/master/twitter.gt2eb.i18n.js
-// @require       https://github.com/Bl4Cc4t/GoodTwitter2/raw/master/twitter.gt2eb.polyfills.js
+// @require       https://github.com/geyerbri/GoodTwitter2-0.0.31.1/raw/master/twitter.gt2eb.i18n.js
+// @require       https://github.com/geyerbri/GoodTwitter2-0.0.31.1/raw/master/twitter.gt2eb.polyfills.js
 // @require       https://code.jquery.com/jquery-3.5.1.min.js
 // @require       https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @require       https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js
-// @updateURL     https://github.com/Bl4Cc4t/GoodTwitter2/raw/master/twitter.gt2eb.user.js
-// @downloadURL   https://github.com/Bl4Cc4t/GoodTwitter2/raw/master/twitter.gt2eb.user.js
+// @updateURL     https://github.com/geyerbri/GoodTwitter2-0.0.31.1/raw/master/twitter.gt2eb.user.js
+// @downloadURL   https://github.com/geyerbri/GoodTwitter2-0.0.31.1/raw/master/twitter.gt2eb.user.js
 // ==/UserScript==
 
 (function($, waitForKeyElements) {
@@ -863,7 +863,7 @@
         <div class="gt2-sidebar-notice-content">
           ${getSvg("tick")} ${getLocStr("updatedInfo").replace("$version$", `v${v}`)}<br />
           <a
-            href="https://github.com/Bl4Cc4t/GoodTwitter2/blob/master/doc/changelog.md#${v.replace(/\./g, "")}"
+            href="https://github.com/geyerbri/GoodTwitter2-0.0.31.1/blob/master/doc/changelog.md#${v.replace(/\./g, "")}"
             target="_blank">
             ${getLocStr("updatedInfoChangelog")}
           </a>
@@ -2210,8 +2210,8 @@
     $(window).on("scroll", () => {
       let curr = window.pageYOffset
 
-      // prevent scroll to top
-      if (prev > 1500 && curr == 0) {
+      // prevent auto scroll to top on /search and /explore
+      if (prev > 1500 && curr == 0 && getPath().match(/^(?:search\?|explore\/?$)/)) {
         window.scroll(0, prev)
         return
       }
